@@ -15,3 +15,4 @@ Online read-only versions
 Use the following links:
 
 * [1. GHK Dynamics](http://nbviewer.ipython.org/urls/raw.github.com/forrestsheldon/neurodynamics/master/week_1_GHK_dynamics.ipynb)
+* [2. HH Dynamics](http://nbviewer.ipython.org/urls/raw.github.com/forrestsheldon/neurodynamics/master/week_2_Single_compartment_neural_models.ipynb)
