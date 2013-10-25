@@ -16,3 +16,4 @@ Use the following links:
 
 * [1. GHK Dynamics](http://nbviewer.ipython.org/urls/raw.github.com/forrestsheldon/neurodynamics/master/week_1_GHK_dynamics.ipynb)
 * [2. HH Dynamics](http://nbviewer.ipython.org/urls/raw.github.com/forrestsheldon/neurodynamics/master/week_2_HH_dynamics.ipynb)
+* [3. Dynamical Systems](http://nbviewer.ipython.org/urls/raw.github.com/forrestsheldon/neurodynamics/master/week_3_Dynamical_systems.ipynb)
