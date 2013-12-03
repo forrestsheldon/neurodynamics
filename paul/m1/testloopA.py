@@ -15,7 +15,7 @@ Jvar = J2/Nelem
 # equations of motion
 g = 1.0
 def dxdt(x, t, g, J):
-    return -x + np.einsum('ij,j', J, np.tanh(g*x))
+        return -x + np.einsum('ij,j', J, np.tanh(g*x))
 
 for nrun in range(Nensm):
     print str(nrun)
@@ -60,29 +60,33 @@ for nrun in range(Nensm):
     # save time series figs, also phase space plots
     fig = plt.figure()
     ax = fig.add_subplot(5,1,1)
-    ax.plot(times, sol.T[0])
+    ax.plot(times, sol[:,0])
     ax = fig.add_subplot(5,1,2)
-    ax.plot(times, sol.T[1])
+    ax.plot(times, sol[:,1])
     ax = fig.add_subplot(5,1,3)
-    ax.plot(times, sol.T[2])
+    ax.plot(times, sol[:,2])
     ax = fig.add_subplot(5,1,4)
-    ax.plot(times, sol.T[3])
+    ax.plot(times, sol[:,3])
     ax = fig.add_subplot(5,1,5)
-    ax.plot(times, sol.T[4])
-    fig.savefig('figs_testloop/ts_J_' + str(J2) + '_run' + str(nrun) + '.pdf')
+    ax.plot(times, sol[:,4])
+    fname = '/home/prozdeba/projects/neurodynamics/paul/m1/figs_testloop/'
+    fname += 'ts_J_' + str(np.sqrt(J2)) + '_run' + str(nrun) + '.pdf'
+    fig.savefig(fname)
+    plt.close(fig)
     
     fig = plt.figure()
     ax = fig.add_subplot(1,1,1)
-    ax.plot(sol.T[0],sol.T[1])
-    fig.savefig('figs_testloop/ps_J_' + str(J2) + '_run' + str(nrun) + '.pdf')
+    ax.plot(sol[:,0],sol[:,1])
+    fname = '/home/prozdeba/projects/neurodynamics/paul/m1/figs_testloop/'
+    fname += 'ps_J_' + str(np.sqrt(J2)) + '_run' + str(nrun) + '.pdf'
+    fig.savefig(fname)
+    plt.close(fig)
     
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-    ax.plot(sol.T[0],sol.T[1],sol.T[2])
-    fig.savefig('figs_testloop/ps_J_' + str(J2) + '_run' + str(nrun) + '_3d.pdf')
-    
-    
-    
-    
-    
-    
+    #fig = plt.figure()
+    #ax = fig.add_subplot(111, projection='3d')
+    #ax.plot(sol.T[0],sol.T[1],sol.T[2])
+    #fig.savefig('./figs_testloop/ps_J_' + str(np.sqrt(J2)) + '_run' + str(nrun) + '_3d.pdf')
+
+
+
+
