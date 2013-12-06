@@ -51,7 +51,7 @@ def local_LE(times, f, Df, x0_a, x0_b, fargs=None, Dfargs=None):
     
     # loop over t, save LLE at each time
     for nt in range(1,len(times)):
-        for iJ in range(J.shape[0]):  # new Jacobian, row by row
+        for iJ in range(ND):  # new Jacobian, row by row
             J[iJ] = odeint(dJdt, J[iJ], (times[nt-1],times[nt]), (Df(x,Dfargs),))[-1]
         x = odeint(f, x, (times[nt-1],times[nt]), fargs)[-1]  # new pos
         
