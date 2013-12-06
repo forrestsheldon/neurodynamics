@@ -1,6 +1,6 @@
-from mpl_toolkits.mplot3d import Axes3D
+#from mpl_toolkits.mplot3d import Axes3D
 
-import time
+import time, cPickle
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
@@ -9,7 +9,7 @@ Nelem = 1000  # number of network elements
 Nensm = 100
 
 # rescale variance of matrix elements
-J2 = 0.95*0.95
+J2 = 1.1*1.1
 Jvar = J2/Nelem
 
 # equations of motion
@@ -19,6 +19,13 @@ def dxdt(x, t, g, J):
 
 for nrun in range(Nensm):
     print str(nrun)
+    
+    # get state of random number generator, pickle in case transient not run out
+    rand_state = np.random.get_state()
+    f = open('data_testloop/randstate_J_' + str(np.sqrt(J2)) + '_run' + str(nrun) + '.pickle', 'wb')
+    cPickle.dump(rand_state, f, protocol=2)
+    f.close()
+    
     # generate instance of random matrix
     J_orig = np.random.randn(Nelem,Nelem)
     J = np.sqrt(Jvar) * J_orig
@@ -35,29 +42,28 @@ for nrun in range(Nensm):
     tstart = time.time()  # timing purposes
     print 'Running out transient...'
     t0 = 0.0
-    tf = 20000.0  # assumed transient time
+    tf = 3000.0  # assumed transient time
     dt = 1.0
     times = np.arange(t0, tf+dt, dt)
     
     sol = odeint(dxdt, x, times, (g,J))
     x = sol[-1]
-    
     print time.time() - tstart, ' s'
     
     # now run for a little while to collect data
     tstart = time.time()  # timing purposes
     print 'Running data collection period...'
     t0 = 0.0
-    tf = 5000.0  # assumed transient time
+    tf = 4000.0
     dt = 0.1
     times = np.arange(t0, tf+dt, dt)
     
     sol = odeint(dxdt, x, times, (g,J))
     x = sol[-1]
-    
     print time.time() - tstart, ' s'
     
     # save time series figs, also phase space plots
+    """
     fig = plt.figure()
     ax = fig.add_subplot(5,1,1)
     ax.plot(times, sol[:,0])
@@ -69,23 +75,24 @@ for nrun in range(Nensm):
     ax.plot(times, sol[:,3])
     ax = fig.add_subplot(5,1,5)
     ax.plot(times, sol[:,4])
-    fname = '/home/prozdeba/projects/neurodynamics/paul/m1/figs_testloop/'
-    fname += 'ts_J_' + str(np.sqrt(J2)) + '_run' + str(nrun) + '.pdf'
+    fname = 'figs_testloop/ts_J_' + str(np.sqrt(J2)) + '_run' + str(nrun) + '.pdf'
     fig.savefig(fname)
     plt.close(fig)
+    """
     
     fig = plt.figure()
     ax = fig.add_subplot(1,1,1)
     ax.plot(sol[:,0],sol[:,1])
-    fname = '/home/prozdeba/projects/neurodynamics/paul/m1/figs_testloop/'
-    fname += 'ps_J_' + str(np.sqrt(J2)) + '_run' + str(nrun) + '.pdf'
+    fname = 'figs_testloop/ps_J_' + str(np.sqrt(J2)) + '_run' + str(nrun) + '.pdf'
     fig.savefig(fname)
     plt.close(fig)
     
-    #fig = plt.figure()
-    #ax = fig.add_subplot(111, projection='3d')
-    #ax.plot(sol.T[0],sol.T[1],sol.T[2])
-    #fig.savefig('./figs_testloop/ps_J_' + str(np.sqrt(J2)) + '_run' + str(nrun) + '_3d.pdf')
+    """
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot(sol.T[0],sol.T[1],sol.T[2])
+    fig.savefig('./figs_testloop/ps_J_' + str(np.sqrt(J2)) + '_run' + str(nrun) + '_3d.pdf')
+    """
 
 
 
