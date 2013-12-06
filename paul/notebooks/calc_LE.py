@@ -58,7 +58,8 @@ def local_LE(times, f, Df, x0_a, x0_b, fargs=None, Dfargs=None):
         # evolve separation vector forward in time
         u = np.einsum('ij,j', J,u0)
         # calculate and save LLE
-        LLE_vec[nt] = np.log(np.einsum('i,i', u,u)) / times[nt]
+        LLE_vec[nt] = np.log(np.einsum('i,i', u,u)) / (2.0*times[nt])
+        # factor of 1/2 above comes from sqrt of sep vec squared, inside log
     
     return LLE_vec
     
