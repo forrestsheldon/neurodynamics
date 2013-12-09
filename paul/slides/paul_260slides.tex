@@ -1,4 +1,5 @@
 \documentclass{beamer}
+\input{header.tex}
 
 \mode<presentation> {
 % The Beamer class comes with a number of default slide themes
@@ -59,13 +60,14 @@
 }
 
 \usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage{amsmath}
 \usepackage{amssymb}
 
 %-------------------------------------------------------------------------------
 % TITLE SLIDES
 %-------------------------------------------------------------------------------
-\title[Criticality]{Criticality and some other bullshit}
+\title[Criticality]{Criticality \& information transfer in neural networks}
 \date{December 6, 2013}
 \author[P. Rozdeba \and F. Sheldon]{Paul Rozdeba\\ \and Forrest Sheldon}
 \institute[UCSD]{University of California, San Diego}
@@ -77,4 +79,208 @@
 %-------------------------------------------------------------------------------
 % PRESENTATION SLIDES
 %-------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{What is Criticality?}
+\begin{itemize}
+
+\item<1> Anything with a power law.
+\item<2> But really...
+\item<3> Near a critical phase transition, as we vary a parameter of the system
+the correlation lengths diverge in space and the dynamics slow. The spartial correlations take the form of power law distributions.
+\item<3>The canonical example
+\begin{figure}
+	\centering
+	\includegraphics[width=.9\textwidth]{Ising_critical}
+\end{figure}
+\end{itemize}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{The case for Criticality in Neuroscience}
+From Chialvo, Emergent Complex Dynamics, Nature Physics 6 2010:
+\begin{itemize}
+\item Brain has necessary hardware to show criticalty
+\item Healthy brains lack a preferred time scale
+\item fMRI degree distributions are power-law
+\item Neuronal avalances have power law size distributions
+\item All known models that display complex emergent behavior display criticality
+\end{itemize}
+These arguments all make the case for a resemblance but lack any reason why an
+organism would want a critical nervous system.
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Hypothesis}
+The dynamics of systems near a critical phase transition enhance information propagation through the system and naturally enact certain encoding strategies.
+\newline
+\newline
+To this end we (are) examining simple systems that display a critical transition:
+\newline
+\newline
+Does the Ising model naturally perform compressive sensing but only near the phase transition?
+\newline
+\newline
+Is dynamical synchronization to a measured signal optimized near criticality?
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Neural network: dynamical model}
+A model of $N$ interconnected ``neurons'' that obey the dynamics:
+\begin{align*}
+	\d{V_i}{t} = -V_i + \sum_j J_{ij} S_j
+\end{align*}
+where $S_i$ is the ``activity'' of a neuron, defined as
+$$ S_i \equiv tanh(g\tilde{J}V_i). $$
+Actually it might as well be any sigmoidal function of $V_i$.  The sigmoidal behavior limits the coupling to avoid runaway unstable solutions (also biophysically motivated, like a saturation of the interneuronal coupling).
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Random neural network: dynamical model}
+The randomness lies in $J_{ij}$.  Each entry is a Gaussian-distributed random variable with the statistics
+\begin{align*}
+	\left\langle J_{ij} \right\rangle &= 0 \\
+	\left\langle J_{ij} J_{kl} \right\rangle &= \frac{\tilde{J}^2}{N} \delta_{ik}\delta_{jl}.
+\end{align*}
+In general, the dynamics of this kind of system are non-relaxational (i.e. the system does not converge to a global minimum of an energy function) since the couplings are asymmetric.
+\newline
+\newline
+In the large-$N$ limit, the dynamics can be reduced to the form
+$$ \d{V_i}{t} = -V_i + \eta_i $$
+and there exist a broad range of chaotic solutions.
+
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{Random neural network: dynamical model}
+With these definitions, the quantity $g\tilde{J}$ acts like a control parameter for the dynamics of the quantity
+$$ \Delta(t) \equiv \left\langle V_i(t_0+t) V_i(t_0) \right\rangle $$
+Roughly, when $g\tilde{J}$ crosses above 1, the dynamics undergo a qualitative change in behavior that looks much like the phase transition in the Ising model; $\Delta$ acts as a qualifier for the behavior.
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{$g\tilde{J} = 1.1$}
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/J_1_1_3d}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/tcorr_J_1_1}
+	\end{subfigure}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{$g\tilde{J} = 1.2$}
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/J_1_2_3d}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/tcorr_J_1_2}
+	\end{subfigure}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{$g\tilde{J} = 1.26$}
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/J_1_26_3d}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/tcorr_J_1_26}
+	\end{subfigure}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{$g\tilde{J} = 1.266$}
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/J_1_266_3d}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/tcorr_J_1_266}
+	\end{subfigure}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{$g\tilde{J} = 1.2668$}
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/J_1_2668_3d}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/tcorr_J_1_2668}
+	\end{subfigure}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{$g\tilde{J} = 1.27$}
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/J_1_27_3d}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/tcorr_J_1_27}
+	\end{subfigure}
+\end{figure}
+\end{frame}
+
+%-------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{$g\tilde{J} = 1.3$}
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/J_1_3_3d}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{paulfigs/tcorr_J_1_3}
+	\end{subfigure}
+\end{figure}
+\end{frame}
+
+
 \end{document}
+
+
+
+
+
+
+
+
+
