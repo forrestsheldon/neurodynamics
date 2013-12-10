@@ -8,14 +8,15 @@ from mpl_toolkits.mplot3d import Axes3D
 from scipy.integrate import odeint
 
 # seed random number generator
-np.random.seed(28031987)
+np.random.seed(19870328)
 
-N = 200  # number of network elements
+N = 256  # number of network elements
 # generate instance of random matrix
 J_orig = np.random.randn(N,N)
 
 # create array of desired Jsig vals
-Jvec = (1.05, 1.1, 1.2, 1.25, 1.26, 1.266, 1.2668, 1.27, 1.3, 1.4)
+Jvec = (1.0, 1.1, 1.2, 1.21, 1.22, 1.23, 1.24, 1.25, 1.26, 1.27, 1.28, 1.29, 
+        1.3, 1.4, 1.5, 1.6, 2.0)
 
 # equations of motion
 def dxdt(x, t, gJ, J):
@@ -40,7 +41,7 @@ for Jval in Jvec:
     # integrate out the transient behavior
     tstart = time.time()
     t0 = 0.0
-    tf = 6000.0
+    tf = 10000.0
     dt = 0.1
     times = np.arange(t0, tf+dt, dt)
     
@@ -53,6 +54,7 @@ for Jval in Jvec:
     t0 = 0.0
     tf = 10000.0
     dt = 0.1
+    Nt = (tf+dt - t0)/dt
     times = np.arange(t0, tf+dt, dt)
     
     sol = odeint(dxdt, x, times, (gJ,J))
@@ -65,26 +67,28 @@ for Jval in Jvec:
     ax.plot(sol[:,0], sol[:,1])
     ax.set_xlabel(r'$x_1$')
     ax.set_ylabel(r'$x_2$')
-    fig.savefig('figs/J_' + str(Jval) + '.pdf')
+    fig.savefig('N256_figs/J_' + str(Jval) + '.pdf')
     
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.plot(sol.T[0],sol.T[1],sol.T[2])
+    ax.plot(sol[:,0],sol[:,1],sol[:,2])
     ax.set_xlabel(r'$x_1$')
     ax.set_ylabel(r'$x_2$')
     ax.set_zlabel(r'$x_3$')
-    fig.savefig('figs/J_' + str(Jval) + '_3d.pdf')
+    fig.savefig('N256_figs/J_' + str(Jval) + '_3d.pdf')
     
     # now calculate and plot time-correlation function
     tstart = time.time()
-    corr_vec = np.correlate(sol[:,0], sol[:,0], mode='full')
-    corr_vec /= np.sqrt(np.einsum('i,i', corr_vec, corr_vec))
+    corr_vec = np.zeros(Nt*2 - 1)
+    for i in range(N):
+        corr_vec += np.correlate(sol[:,i], sol[:,i], mode='full')
+    corr_vec /= (N * np.sqrt(np.einsum('i,i', corr_vec, corr_vec)))
     print time.time()-tstart, ' s'
     
     fig = plt.figure()
     ax = fig.add_subplot(1,1,1)
     ax.plot(corr_vec)
-    fig.savefig('figs/tcorr_J_' + str(Jval) + '.pdf')
+    fig.savefig('N256_figs/tcorr_J_' + str(Jval) + '.pdf')
     
     plt.close(fig)
     
