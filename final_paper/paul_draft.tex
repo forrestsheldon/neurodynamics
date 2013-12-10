@@ -4,6 +4,7 @@
 \usepackage{url}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{natbib}
 %\documentstyle[nips13submit_09,times,art10]{article} % For LaTeX 2.09
 
 \input{header.tex}
@@ -42,28 +43,61 @@ La Jolla, CA 92093 \\
 \nipsfinalcopy % Uncomment for camera-ready version
 
 \begin{document}
-
-
 \maketitle
 
+%-------------------------------------------------------------------------------
+% ABSTRACT
+%-------------------------------------------------------------------------------
 \begin{abstract}
 It has been posited that biological neural networks, such as a brain, may naturally exist in critical states.  We propose two mechanisms for signal transduction in two such networks as encoding strategies which are optimized by criticality.  First, we examine compressive sensing in a 2-dimensional Ising model at or near its critical temperature.  Secondly, we examine the dynamical synchronization capabilities of a random neural network model as it transitions into chaotic behavior.  We propose that both techniques should be most successful at the critical state of either model.
 \end{abstract}
 
+%-------------------------------------------------------------------------------
+% PAUL'S SECTION
+%-------------------------------------------------------------------------------
 \section{Dynamical synchronization technique}
+The model equations are coupled to a set of data through a linear term as
+\begin{align}
+	\d{x_i}{t} = f_i(x) + \sum_{j} g_{ij} \left(y_j - x_j\right)
+\end{align}
+where $x(t)$ and $y(t)$ are the model and the data trajectories, respectively, and $g_{ij}$ is a set of coupling constants.  In practice, only a few of the couplings will be nonzero (corresponding to the components of the system which can be measured) and the matrix $g_{ij}$ is diagonal, since in this scheme there is no obvious advantage to coupling different components of the system to each other.
+
+In general, a model can be synchronized to a data set if enough measurements are made, and if the coupling is large enough.  What constitutes ``enough'' seems to come on a case-by-case basis.  Roughly, what is required is for the linear terms to regularize the (coupled) solution manifold by making the value of the largest Lyapunov exponent non-positive.  However, the ratio of the $i$-th coupling term to the $i$-th term of the dynamics must remain small, so as to not wash out the physicality of the problem (in practice, this may also increase the speed of convergence to the actual solution).  In other words, adjusting the coupling is a delicate balance for which there is no general procedure.
+
+The success of the procedure, however, is not ultimately measured by the ability to synchronize, but by the ability of the model \emph{make predictions} after the coupling is turned off, since in general we're only able to measure a few components of the system.  In the case where we have access to all of the data states, however, we can additionally test the procedure by examining the normally unobservable states.  This is called a \emph{twin experiment} in the literature and is a useful technique for assessing the viability of the model to synchronize in a controlled setting.
 
 \section{Random neural network model}
-We now consider a neural network model which is a dynamical system describing a network of $N$ randomly connected elements each with leaky capacitive terms.  The equations of motion describing the system are
+We now consider a neural network model, originally presented by \cite{Sompolinsky1988}, which is a dynamical system describing a network of $N$ randomly connected elements each having a leaky capacitive term.  The equations of motion describing the system are
 \begin{align}
 	\d{V_i}{t} &= -V_i + \sum_{j=1}^{N} J_{ij} \phi(V_j) \label{eq:m1_eom}
 \end{align}
-where $\phi(V_i)$ is a function which may be thought of as an ``activity'' proportional to the synaptic current between neurons $i$ and $j$.  One possible choice is a sigmoid function of $V$, i.e. $\phi_i = \tanh\left(\alpha V_i\right)$.  This choice is both biologically motivated as acting to saturate synaptic activity as a function of membrane voltage, as well as mathematically to avoid highly unstable, runaway solutions to (\ref{eq:m1_eom}).  $\alpha$ acts as a control parameter on the turnaround rate of the synaptic activity around $V = 0$; in some sense it controls the ``degree of nonlinearlity'' in the system.
+where $\phi(V_i)$ is a function which may be thought of as an ``activity'' proportional to the synaptic current between neurons $i$ and $j$.  One possible choice is a sigmoid function of $V$, i.e. $\phi_i = \tanh\left(\alpha V_i\right)$.  This choice is both biologically motivated as acting to saturate synaptic activity as a function of membrane voltage, as well as mathematically to avoid highly unstable, runaway solutions to eq. (\ref{eq:m1_eom}).  $\alpha$ acts as a control parameter on the turnaround rate of the synaptic activity around $V = 0$; in some sense it controls the ``degree of nonlinearity'' in the system.
 
 The matrix $J_{ij}$ describes the connectivity in the network; in this particular model, $J_{ij}$ is chosen to be a Gaussian random matrix with elements distributed according to the statistics
-\begin{align*}
-	\exval{J_{ij}} = 0, \quad \exval{J_{ij}J_{kl}} = \frac{\tilde{J}^2}{N} \delta_{ik}\delta_{jl}
-\end{align*}
-which means synaptic connections are, in general, asymmetric.
+\begin{align}
+	\exval{J_{ij}} = 0, \quad \exval{J_{ij}J_{kl}} = \frac{\tilde{J}^2}{N} \: \delta_{ik}\delta_{jl} \left(1 - \delta_{ij}\right) \left(1 - \delta_{kl}\right) \label{eq:m1_stats}
+\end{align}
+which means synaptic connections are, in general, asymmetric and totally decorrelated.  This also means that, on average, half of the connections are inherently inhibitory and half are excitatory.  We use ``inherently'' because the sign of the synaptic current into neuron $i$ switches depending on the sign of $V_j$.
+
+A detailed mathematical treatment of this model in the limit of large $N$ is given in \cite{Sompolinsky1988}.  Under the replacement $\alpha \rightarrow g\tilde{J}$ in the expression for $\phi(V_i)$, the model undergoes a ``phase transition'' when the control parameter $g\tilde{J}$ reaches a critical value of 1.  This is manifest in the structure of the attracting solution manifold in the $\{V_i\}$ state space, which acquires a positive Lyapunov exponent; in other words a family of chaotic solutions to (\ref{eq:m1_eom}) appears.
+
+The similarity of this transition to the phase transition in the 2D Ising model near $T_\text{crit}$ is most apparent in the behavior of the quantity
+\begin{align}
+	\Delta(t) \equiv \exval{V_i(t_0) V_i(t_0 + t)} \label{eq:m1_Cteq}
+\end{align}
+
+\subsection{Numerical analysis}
+We examined the model for $N=256$ neurons with a single instantiation of $J_{ij}$.  Ideally, we would like to scale up the simulation size to a larger $N$, perhaps near 1000, and to gather statistics about an \emph{ensemble} of models parameterized by different instantiations of $J_{ij}$.  However, limited by time, we now present said results as at least a preliminary examination of the model.
+
+First, we performed a comparison of numerical results to the analytic results of \cite{Sompolinsky1988}.  For a single randomly drawn instantiation of $J_{ij}$, (\ref{eq:m1_eom}) was integrated forward in time using the \texttt{LSODA} solver in \texttt{scipy.integrate}.  The initial conditions were drawn randomly from a ball of radius 1 near the origin $V_i=0$.  We found that above $g\tilde{J}=1$, limit cycle solutions appeared in a Hopf bifurcation from an attracting fixed point at the origin (which became unstable in the bifurcation).
+
+
+%-------------------------------------------------------------------------------
+% REFERENCES
+%-------------------------------------------------------------------------------
+\bibliographystyle{unsrt}
+\bibliography{refs}
+
 
 
 \end{document}
