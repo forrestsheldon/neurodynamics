@@ -15,8 +15,7 @@ N = 256  # number of network elements
 J_orig = np.random.randn(N,N)
 
 # create array of desired Jsig vals
-Jvec = (1.0, 1.1, 1.2, 1.21, 1.22, 1.23, 1.24, 1.25, 1.26, 1.27, 1.28, 1.29, 
-        1.3, 1.4, 1.5, 1.6, 2.0)
+Jvec = (1.248, 1.249, 1.251, 1.252)
 
 # equations of motion
 def dxdt(x, t, gJ, J):

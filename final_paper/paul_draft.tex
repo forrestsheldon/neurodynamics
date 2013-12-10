@@ -1,0 +1,80 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{nips13submit_e,times}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\documentstyle[nips13submit_09,times,art10]{article} % For LaTeX 2.09
+
+\input{header.tex}
+
+\title{Criticality in neural networks paper title}
+
+
+\author{
+Paul Rozdeba%\thanks{ Use footnote for providing further information
+%about author (webpage, alternative address)---\emph{not} for acknowledging
+%funding agencies.} \\
+\\
+Department of Physics\\
+University of California, San Diego\\
+La Jolla, CA 92093 \\
+\texttt{prozdeba@physics.ucsd.edu} \\
+\And
+Forrest Sheldon \\
+Department of Physics\\
+University of California, San Diego\\
+La Jolla, CA 92093 \\
+\texttt{forrestemail@physics.ucsd.edu} \\
+}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to \LaTeX{} to determine where to break
+% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
+% puts 3 of 4 authors names on the first line, and the last on the second
+% line, try using \AND instead of \And before the third author name.
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+\nipsfinalcopy % Uncomment for camera-ready version
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+It has been posited that biological neural networks, such as a brain, may naturally exist in critical states.  We propose two mechanisms for signal transduction in two such networks as encoding strategies which are optimized by criticality.  First, we examine compressive sensing in a 2-dimensional Ising model at or near its critical temperature.  Secondly, we examine the dynamical synchronization capabilities of a random neural network model as it transitions into chaotic behavior.  We propose that both techniques should be most successful at the critical state of either model.
+\end{abstract}
+
+\section{Dynamical synchronization technique}
+
+\section{Random neural network model}
+We now consider a neural network model which is a dynamical system describing a network of $N$ randomly connected elements each with leaky capacitive terms.  The equations of motion describing the system are
+\begin{align}
+	\d{V_i}{t} &= -V_i + \sum_{j=1}^{N} J_{ij} \phi(V_j) \label{eq:m1_eom}
+\end{align}
+where $\phi(V_i)$ is a function which may be thought of as an ``activity'' proportional to the synaptic current between neurons $i$ and $j$.  One possible choice is a sigmoid function of $V$, i.e. $\phi_i = \tanh\left(\alpha V_i\right)$.  This choice is both biologically motivated as acting to saturate synaptic activity as a function of membrane voltage, as well as mathematically to avoid highly unstable, runaway solutions to (\ref{eq:m1_eom}).  $\alpha$ acts as a control parameter on the turnaround rate of the synaptic activity around $V = 0$; in some sense it controls the ``degree of nonlinearlity'' in the system.
+
+The matrix $J_{ij}$ describes the connectivity in the network; in this particular model, $J_{ij}$ is chosen to be a Gaussian random matrix with elements distributed according to the statistics
+\begin{align*}
+	\exval{J_{ij}} = 0, \quad \exval{J_{ij}J_{kl}} = \frac{\tilde{J}^2}{N} \delta_{ik}\delta_{jl}
+\end{align*}
+which means synaptic connections are, in general, asymmetric.
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
