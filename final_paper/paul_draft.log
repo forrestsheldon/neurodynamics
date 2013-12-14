@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  10 DEC 2013 23:01
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.6.30)  14 DEC 2013 00:29
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -274,24 +274,42 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip48
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count115
-) (./header.tex) (./paul_draft.aux)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+)
+\Gin@req@height=\dimen118
+\Gin@req@width=\dimen119
+)
+(./header.tex) (./paul_draft.aux)
 \openout1 = `paul_draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
-LaTeX Font Info:    ... okay on input line 45.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 45.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 46.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -301,18 +319,18 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count116
-\scratchdimen=\dimen118
+\scratchdimen=\dimen120
 \scratchbox=\box31
 \nofMPsegments=\count117
 \nofMParguments=\count118
 \everyMPshowfont=\toks20
 \MPscratchCnt=\count119
-\MPscratchDim=\dimen119
+\MPscratchDim=\dimen121
 \MPnumerator=\count120
 \makeMPintoPDFobject=\count121
 \everyMPtoPDFconversion=\toks21
 )
-Package hyperref Info: Link coloring OFF on input line 45.
+Package hyperref Info: Link coloring OFF on input line 46.
  (/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 
@@ -321,57 +339,153 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count122
 )
-LaTeX Info: Redefining \ref on input line 45.
-LaTeX Info: Redefining \pageref on input line 45.
-LaTeX Info: Redefining \nameref on input line 45.
+LaTeX Info: Redefining \ref on input line 46.
+LaTeX Info: Redefining \pageref on input line 46.
+LaTeX Info: Redefining \nameref on input line 46.
 
 (./paul_draft.out) (./paul_draft.out)
 \@outlinefile=\write3
 \openout3 = `paul_draft.out'.
 
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
-LaTeX Font Info:    Try loading font information for U+msa on input line 47.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 48.
+LaTeX Font Info:    Try loading font information for U+msa on input line 48.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 47.
+LaTeX Font Info:    Try loading font information for U+msb on input line 48.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 47.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 47.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 48.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 48.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 52.
  [1
 
 {/usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-(./paul_draft.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 130.
+<paul_figs/J_1_23.pdf, id=67, 578.16pt x 433.62pt>
+File: paul_figs/J_1_23.pdf Graphic file (type pdf)
+ <use paul_figs/J_1_23.pdf>
+Package pdftex.def Info: paul_figs/J_1_23.pdf used on input line 123.
+(pdftex.def)             Requested size: 357.73405pt x 268.29907pt.
+
+<paul_figs/tcorr_J_1_23.pdf, id=68, 578.16pt x 433.62pt>
+File: paul_figs/tcorr_J_1_23.pdf Graphic file (type pdf)
+
+<use paul_figs/tcorr_J_1_23.pdf>
+Package pdftex.def Info: paul_figs/tcorr_J_1_23.pdf used on input line 129.
+(pdftex.def)             Requested size: 357.73405pt x 268.29907pt.
+
+<paul_figs/J_1_252.pdf, id=69, 578.16pt x 433.62pt>
+File: paul_figs/J_1_252.pdf Graphic file (type pdf)
+
+<use paul_figs/J_1_252.pdf>
+Package pdftex.def Info: paul_figs/J_1_252.pdf used on input line 134.
+(pdftex.def)             Requested size: 357.73405pt x 268.29907pt.
+
+<paul_figs/tcorr_J_1_252.pdf, id=70, 578.16pt x 433.62pt>
+File: paul_figs/tcorr_J_1_252.pdf Graphic file (type pdf)
+
+<use paul_figs/tcorr_J_1_252.pdf>
+Package pdftex.def Info: paul_figs/tcorr_J_1_252.pdf used on input line 139.
+(pdftex.def)             Requested size: 357.73405pt x 268.29907pt.
+
+<paul_figs/J_1_3.pdf, id=71, 578.16pt x 433.62pt>
+File: paul_figs/J_1_3.pdf Graphic file (type pdf)
+ <use paul_figs/J_1_3.pdf>
+Package pdftex.def Info: paul_figs/J_1_3.pdf used on input line 144.
+(pdftex.def)             Requested size: 357.73405pt x 268.29907pt.
+
+<paul_figs/tcorr_J_1_3.pdf, id=72, 578.16pt x 433.62pt>
+File: paul_figs/tcorr_J_1_3.pdf Graphic file (type pdf)
+
+<use paul_figs/tcorr_J_1_3.pdf>
+Package pdftex.def Info: paul_figs/tcorr_J_1_3.pdf used on input line 149.
+(pdftex.def)             Requested size: 357.73405pt x 268.29907pt.
+
+<paul_figs/J_1_4.pdf, id=73, 578.16pt x 433.62pt>
+File: paul_figs/J_1_4.pdf Graphic file (type pdf)
+ <use paul_figs/J_1_4.pdf>
+Package pdftex.def Info: paul_figs/J_1_4.pdf used on input line 154.
+(pdftex.def)             Requested size: 357.73405pt x 268.29907pt.
+
+<paul_figs/tcorr_J_1_4.pdf, id=74, 578.16pt x 433.62pt>
+File: paul_figs/tcorr_J_1_4.pdf Graphic file (type pdf)
+
+<use paul_figs/tcorr_J_1_4.pdf>
+Package pdftex.def Info: paul_figs/tcorr_J_1_4.pdf used on input line 159.
+(pdftex.def)             Requested size: 357.73405pt x 268.29907pt.
+
+<paul_figs/sync_J_1_252_g_0_3.pdf, id=77, 578.16pt x 433.62pt>
+File: paul_figs/sync_J_1_252_g_0_3.pdf Graphic file (type pdf)
+
+<use paul_figs/sync_J_1_252_g_0_3.pdf>
+Package pdftex.def Info: paul_figs/sync_J_1_252_g_0_3.pdf used on input line 17
+0.
+(pdftex.def)             Requested size: 357.73405pt x 268.29907pt.
+ (./paul_draft.bbl
+Underfull \vbox (badness 2478) has occurred while \output is active []
+
  [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 130.
+[4 <./paul_figs/J_1_23.pdf> <./paul_figs/tcorr_J_1_23.pdf
+
+pdfTeX warning: /usr/texbin/pdflatex (file ./paul_figs/tcorr_J_1_23.pdf): PDF i
+nclusion: multiple pdfs with page group included in a single page
+>] [5 <./paul_figs/J_1_252.pdf> <./paul_figs/tcorr_J_1_252.pdf
+
+pdfTeX warning: /usr/texbin/pdflatex (file ./paul_figs/tcorr_J_1_252.pdf): PDF 
+inclusion: multiple pdfs with page group included in a single page
+>] [6 <./paul_figs/J_1_3.pdf> <./paul_figs/tcorr_J_1_3.pdf
+
+pdfTeX warning: /usr/texbin/pdflatex (file ./paul_figs/tcorr_J_1_3.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
+>] [7 <./paul_figs/J_1_4.pdf> <./paul_figs/tcorr_J_1_4.pdf
+
+pdfTeX warning: /usr/texbin/pdflatex (file ./paul_figs/tcorr_J_1_4.pdf): PDF in
+clusion: multiple pdfs with page group included in a single page
+>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 193.
+ [8] [9 <./paul_figs/sync_J_1_252_g_0_3.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 193.
  (./paul_draft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 130.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 130.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 193.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 193.
 Package rerunfilecheck Info: File `paul_draft.out' has not changed.
-(rerunfilecheck)             Checksum: 9C37F88421B80F874E53A032C3CBAD3B;246.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 130.
+(rerunfilecheck)             Checksum: 360C7F32E0774C02B7001C8A14E142DF;361.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 193.
  ) 
 Here is how much of TeX's memory you used:
- 6567 strings out of 493488
- 91736 string characters out of 3141326
- 186817 words of memory out of 3000000
- 9779 multiletter control sequences out of 15000+200000
+ 6907 strings out of 493488
+ 97546 string characters out of 3141326
+ 192328 words of memory out of 3000000
+ 10073 multiletter control sequences out of 15000+200000
  23930 words of font info for 56 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,10n,39p,800b,319s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,11n,39p,932b,427s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
 xlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
@@ -385,10 +499,10 @@ mf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2012/texmf-dist/
 fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type
 1/urw/times/utmr8a.pfb></usr/local/texlive/2012/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on paul_draft.pdf (3 pages, 131292 bytes).
+Output written on paul_draft.pdf (9 pages, 3277078 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
- 94 compressed objects within 1 object stream
- 21 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 381 PDF objects out of 1000 (max. 8388607)
+ 249 compressed objects within 3 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -5,4 +5,10 @@ H~Sompolinsky, A~Crisanti, and H.~Sommers.
 \newblock {Chaos in random neural networks}.
 \newblock {\em Physical Review Letters}, 61(3):259--262, July 1988.
 
+\bibitem{Abarbanel2009}
+Henry D.~I. Abarbanel, Daniel~R. Creveling, Reza Farsian, and Mark Kostuk.
+\newblock {Dynamical State and Parameter Estimation}.
+\newblock {\em SIAM Journal on Applied Dynamical Systems}, 8(4):1341--1381,
+  January 2009.
+
 \end{thebibliography}
