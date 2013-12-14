@@ -5,6 +5,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{natbib}
+\usepackage[pdftex]{graphicx}
 %\documentstyle[nips13submit_09,times,art10]{article} % For LaTeX 2.09
 
 \input{header.tex}
@@ -65,7 +66,7 @@ at the critical state of either model.
 \section{Introduction}
 Criticality has enjoyed widespread success in the scientific community, being
 applied to problems as diverse as gene expression, starling flocks, and forest
-fires.\cite{maybe}  Originating in statistical physics, criticality is a set
+fires.\cite{Chialvo2010}  Originating in statistical physics, criticality is a set
 of properties of a system near a second order phase transition, in which the
 system possesses long range correlations in both space and time.  These
 properties make it an attractive tool for describing the many complex systems
@@ -75,11 +76,13 @@ rather superficial resemblence, usually resting on the existence of a power
 law in some measurement of the system. The recent realization that power laws
 occur far more often, and for a broader range of mechanisms than originally
 thought has tempered some of the enthusiasm for scale-free networks and, by
-association, criticality.\cite{keller}
+association, criticality.\cite{Keller2005} However, as the most established and
+flexible phenomenon displaying long range order, criticality still occupies
+a strong position as a candidate theory for understanding complex systems.
 
-In the review  "Emergent complex neural dynamics\cite{chialvo}" Chialvo makes a case for the
-brain exhibiting criticality.  He pulls from several pieces of evidence
-including:
+In the review  "Emergent complex neural dynamics\cite{Chialvo2010}" Dante Chialvo
+makes a case for the brain exhibiting criticality.  He pulls from several
+pieces of evidence including:
 \begin{itemize}
 \item The brain contains the \emph{necessary} elements (a large network of
 nonlinear interacting elements) to display complex emergent behavior and thus
@@ -91,11 +94,136 @@ criticality.
 critical branching process.
 \item Degree distributions created from fMRI recordings are scale-free.
 \end{itemize}
+Taken as a whole these form a reasonably strong case for criticality playing 
+some role in the brain's dynamics however they all suffer from the defect
+mentioned previously: Power laws are nonspecific to criticality.  As such, we
+take up the same investigation from the opposite direction asking 'Why would a
+brain want to be critical?'  To this end, we examine systems that possess a
+known critical phase transition and which are relevant to neuroscience: the
+ising model and a simple neural network with a leak current and sigmoidal
+connection strengths.
+
+In the Ising model, we examine the structure of clustering that occurs in the
+vicinity of a phase transition.  In particular, is it possible to reconstruct
+the states of distant spins held fixed as the system is evolved, given the state
+of the system at all points between them?  We examine this possibility at
+various temperatures and examine the independence of multiple measurements.
 
 %-------------------------------------------------------------------------------
-% ABSTRACT
+% FORREST'S SECTION
 %-------------------------------------------------------------------------------
+\section{The Ising Model}
+The ising model could be considered the canonical physical system exhibiting
+critical phase transition.  The spins may be considered small arrows that may
+point up or down with a corresponding value of +1 and -1. They are governed by
+the Hamiltonian,
+\[H = -\frac{\epsilon}{2} \sum_{i\neq j} s_i s_j\]
+where $\epsilon$ is some energy scale and the factor of $\frac{1}{2}$
+compensates for double counting in the sum.  There is an energetic cost for two
+neighboring spins to oppose each other.  As such, the system displays two phases:
+As the temperature is raised, the system moves from an ordered phase in which
+all of the spins point in the same direction and thus minimize the energy, to a
+disordered phase in which neighboring spins oppose each other. Between the two
+phases the system displays power law correlation distributions in space and time
+and a large number of accessible states.  These three regimes are displayed in
+Figure 1.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.5\linewidth]{Ising_states.png}
+\end{center}
+\caption{The ising model below, near, and above the critical temperature}
+\end{figure}
 
+\section{Compressive Sensing}
+Compressive sensing is a process by which a $k$-sparse signal of length $N$ may
+be perfectly reconstructed from only $O(K\log{N/K})$ measurements if those
+measurements are random projections.\cite{Candes2008} This
+is interesting both because $O(K\log{N/K})$ is much better than $O(N)$ which is
+implied by the Shannon-Nyquist theorem, and that this is done using random
+projections.  This is because random projections are information preserving in
+that they approximately preserve distances between major features in the data.
+Stating this more mathematically, given a discrete signal $x$ with a sparse
+representation in some basis $\Psi$, we acquire $x$ by projecting it onto a set
+of vectors $\Phi$, acquiring a vector of projections $y$:
+\[y = \Phi x = \Phi \Psi s = \Theta s\]
+We can perfectly reconstruct our original signal $s$ from only a few
+measurements $y$ so long as $\Theta = \Phi\Psi$ obeys the \emph{Restricted
+Isometry Property} which happens to be fulfilled by most random bases.
+(Interested readers may consult\cite{Candes2008}\cite{Baraniuk2007}) The sparsity of
+most natural signals and the use of random projections has led Chuck Stevens to
+suggest that this coding strategy may be used in a modified form in several
+regions of the cortex that have resisted attempts at making a 'map' of their
+function.  We propose that a system at criticality may naturally perform these
+projections and choose an Ising model to attempt to demonstrate it.
+
+\section{Methods-I}
+Ising models were simulated by means of markov chain monte carlo.
+\cite{MacKay2003}\cite{Schroeder1999} Comparison
+between Metropolis and Gibbs sampling algorithms yielded that the Metropolis
+algorithm performed poorly at high temperatures and Gibbs sampling was
+performed thereafter.  A signal vector $\vec{s}$ was generate with [-1, 1] entries. These
+entries were inputed into the model at random points, held fixed as the system
+evolved. A single random spin $r$ was also selected to be recorded. We would regard
+this single spin as our random projection of the signal held fixed in the model.
+ After evolving the system to equilibrium, a breadth first search was performed
+through the cluster in the model containing the recording spin.  A cluster
+incidence vector $\vec{i}$ was formed whose elements were 1 if the corresponding signal
+element was a member of the cluster and zero otherwise.  The signal vector was
+then $l^1$ normalized so that the equation, $r = \vec{i} \cdot \vec{s}$ was satisfied.  By
+repeating this procedure with the signal spins held fixed and the same recording
+spin, we were able to generate a system $\vec{r} = I\vec{s}$ that should be approximately
+solved by our signal vector and recorded spins.
+
+A full study of the properties of these measurement vectors (and alternative
+schemes at constructing a measurement matrix) is still underway.  Under the
+limitation of time, two analyses were undertaken.  First, the rank of $I$ was
+examined as a function of number of measurements and temperature. Second, the
+system was solved by means of the Moore-Penrose pseudoinverse and the reconstruction
+error calculated, also as a function of number of measurements and temperature.
+All results here are for a $(32\times 32)$ spin model to keep computation time
+reasonable, although similar analyses have been run on larger systems.
+
+\section{Results-I}
+
+Results thus far have been...a bit mundane.  We begin with the high point.  The
+rank of the measurement matrix (Figure 2) seems to show a distinct temperature dependence.
+At the critical temperature, each measurement remains independent and the
+measurement matrix attains full row rank in as few steps as possible.  Only
+slightly worse is the low temperature limit.  Here several measurement vectors are
+linearly dependent on those previously measured and do not increase the rank.
+Finally, worst off is the high temperature limit in which the matrix was not able
+to reach full rank given twice as many measurements as necessary.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.5\linewidth]{Ranks.png}
+\end{center}
+\caption{Measurement matrix ranks at various temperatures}
+\end{figure}
+This would seem to indicate that the critical state offers some advantage over its
+neighboring phases in its ability to transmit information located around the model.
+In the disordered phase, the small correlation length makes it very difficult to
+obtain interactions with distant spins, and in the ordered phase the large interaction
+size causes repetitive couplings to all the spins also transmitting redundant information.
+
+Attempting to reconstruct the original signal from these measurement however, has
+been far less successful.  Using the Moore-Penrose pseudoinverse to attempt
+reconstruction at every step, we were able to calculate reconstruction error
+for each measurement (Figure 3).  
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.5\linewidth]{errors.png}
+\end{center}
+\caption{Reconstruction error at various temperatures}
+\end{figure}
+We have far less understanding this figure.  It seems that the critical temperature
+is the most numerically unstable of all and especially so just as the matrix reaches
+full rank.  As this is the case for the low temperature matrix as well, this may be
+a feature of the MP pseudoinverse.  While an $l^1$ minimization would have been more
+enkeeping with the original inspiration for this project due to its preferred role
+in compressive sensing, it is substantially more difficult to implement and refinements
+of the reconstruction will be relegated to subsequent work. As it stands, I believe
+the poor quality of the reconstructions is feature of the specific encoding and 
+reconstruction scheme used and that further work may yield subsantially more accurate results.
 %-------------------------------------------------------------------------------
 % PAUL'S SECTION
 %-------------------------------------------------------------------------------
