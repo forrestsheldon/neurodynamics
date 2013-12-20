@@ -10,7 +10,7 @@
 
 \input{header.tex}
 
-\title{Criticality in neural networks paper title}
+\title{Random Projections and Synchronization in Critical Neural Models}
 
 
 \author{
@@ -129,7 +129,7 @@ Figure 1.
 \caption{The ising model below, near, and above the critical temperature}
 \end{figure}
 
-\section{Compressive Sensing}
+\subsection{Compressive Sensing}
 Compressive sensing is a process by which a $k$-sparse signal of length $N$ may
 be perfectly reconstructed from only $O(K\log{N/K})$ measurements if those
 measurements are random projections.\cite{Candes2008} This
@@ -151,7 +151,7 @@ regions of the cortex that have resisted attempts at making a 'map' of their
 function.  We propose that a system at criticality may naturally perform these
 projections and choose an Ising model to attempt to demonstrate it.
 
-\section{Methods-I}
+\subsection{Constructin Measurement Matrices}
 Ising models were simulated by means of markov chain monte carlo.
 \cite{MacKay2003}\cite{Schroeder1999} Comparison
 between Metropolis and Gibbs sampling algorithms yielded that the Metropolis
@@ -172,16 +172,16 @@ solved by our signal vector and recorded spins.
 A full study of the properties of these measurement vectors (and alternative
 schemes at constructing a measurement matrix) is still underway.  Under the
 limitation of time, two analyses were undertaken.  First, the rank of $I$ was
-examined as a function of number of measurements and temperature. Second, the
-system was solved by means of the Moore-Penrose pseudoinverse and the reconstruction
-error calculated, also as a function of number of measurements and temperature.
+calculated through SVD and examined as a function of number of measurements and
+temperature. Second, the
+system was solved by means of the Moore-Penrose pseudoinverse and the root square
+reconstruction error calculated, also as a function of number of measurements and temperature.
 All results here are for a $(32\times 32)$ spin model to keep computation time
 reasonable, although similar analyses have been run on larger systems.
 
-\section{Results-I}
+\subsection{Results}
 
-Results thus far have been...a bit mundane.  We begin with the high point.  The
-rank of the measurement matrix (Figure 2) seems to show a distinct temperature dependence.
+Ranks at various temperatures are displayed in Figure 2.
 At the critical temperature, each measurement remains independent and the
 measurement matrix attains full row rank in as few steps as possible.  Only
 slightly worse is the low temperature limit.  Here several measurement vectors are
@@ -194,15 +194,10 @@ to reach full rank given twice as many measurements as necessary.
 \end{center}
 \caption{Measurement matrix ranks at various temperatures}
 \end{figure}
-This would seem to indicate that the critical state offers some advantage over its
-neighboring phases in its ability to transmit information located around the model.
-In the disordered phase, the small correlation length makes it very difficult to
-obtain interactions with distant spins, and in the ordered phase the large interaction
-size causes repetitive couplings to all the spins also transmitting redundant information.
 
 Attempting to reconstruct the original signal from these measurement however, has
 been far less successful.  Using the Moore-Penrose pseudoinverse to attempt
-reconstruction at every step, we were able to calculate reconstruction error
+reconstruction at every step, we attempted to calculate reconstruction error
 for each measurement (Figure 3).  
 \begin{figure}[h]
 \begin{center}
@@ -210,7 +205,19 @@ for each measurement (Figure 3).
 \end{center}
 \caption{Reconstruction error at various temperatures}
 \end{figure}
-We have far less understanding this figure.  It seems that the critical temperature
+
+\subsection{Discussion}
+
+Results thus far have been disappointing.  We begin with the high point.  The
+rank of the measurement matrix (Figure 2) seems to show a distinct temperature
+dependence.
+This would seem to indicate that the critical state offers some advantage over its
+neighboring phases in its ability to transmit information located around the model.
+In the disordered phase, the small correlation length makes it very difficult to
+obtain interactions with distant spins, and in the ordered phase the large interaction
+size causes repetitive couplings to all the spins also transmitting redundant information.
+
+We have far less understanding of our errors.  It seems that the critical temperature
 is the most numerically unstable of all and especially so just as the matrix reaches
 full rank.  As this is the case for the low temperature matrix as well, this may be
 a feature of the MP pseudoinverse.  While an $l^1$ minimization would have been more
@@ -218,7 +225,7 @@ enkeeping with the original inspiration for this project due to its preferred ro
 in compressive sensing, it is substantially more difficult to implement and refinements
 of the reconstruction will be relegated to subsequent work. As it stands, I believe
 the poor quality of the reconstructions is feature of the specific encoding and 
-reconstruction scheme used and that further work may yield subsantially more accurate results.
+reconstruction scheme used and that further work may yield more accurate results.
 
 %-------------------------------------------------------------------------------
 % PAUL'S SECTION
